@@ -27,9 +27,8 @@ public class Config {
     
     public Config(String name, Plugin plugin) {
         this.file = new File(plugin.getDataFolder(), name);
-        if (!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdir();
-        }
+        if (!plugin.getDataFolder().exists()) plugin.getDataFolder().mkdir();
+    
         if (!this.file.exists()) {
             try {
                 this.file.createNewFile();
@@ -38,29 +37,18 @@ public class Config {
                     ByteStreams.copy(is, os);
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+            catch (Exception e) { e.printStackTrace(); }
         }
-        try {
-            this.config = ConfigurationProvider.getProvider((Class)YamlConfiguration.class).load(this.file);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        
+        try { this.config = ConfigurationProvider.getProvider((Class)YamlConfiguration.class).load(this.file); }
+        catch (Exception e) { e.printStackTrace(); }
     }
     
     public void save() {
-        try {
-            ConfigurationProvider.getProvider((Class)YamlConfiguration.class).save(this.config, this.file);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        try { ConfigurationProvider.getProvider((Class)YamlConfiguration.class).save(this.config, this.file); }
+        catch (Exception e) { e.printStackTrace(); }
     }
     
-    public Configuration getConfig() {
-        return this.config;
-    }
+    public Configuration getConfig() { return this.config; }
 }
 ```
