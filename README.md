@@ -4,7 +4,7 @@ This is a Bungee Configuration API made by me, it's extremely useful & easy to u
 
 
 **How to use**\
-Copy and paste the code below, into a new class called something like 'Config'. Then in your main bungee class that extends Plugin, create a variable like this above your onEnable();
+Copy and paste the code at the bottom of the page, into a new class called something like 'Config'. Then in your main bungee class that extends Plugin, create a variable like this above your onEnable();
 ```
 private Config motdConfig;
 ```
